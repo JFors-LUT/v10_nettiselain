@@ -112,11 +112,10 @@ public void init_maailma(View v) {
 public void sivuTaakse(View v){
         String current = "";
     if (liter.hasNext()) {
-        if(liter.nextIndex() == 0){
-            liter.next();
-        }
+        liter.next();
         current = (String) liter.next();
         webbi.loadUrl(current);
+        liter.previous();
     }
     }
 
@@ -128,6 +127,7 @@ public void sivuEtee (View v){
     }
     System.out.println("alkoimäärä: "+historia.size());
         if (liter.hasPrevious()) {
+            System.out.println("Indeksi: "+liter.previousIndex());
             if (liter.previousIndex() == historia.size()-1){
                 String sivu = (String) liter.previous();
             }
