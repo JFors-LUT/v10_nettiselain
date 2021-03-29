@@ -57,12 +57,17 @@ public class MainActivity extends AppCompatActivity {
     public void performHaku(View v) {
         if (ww_sivu.getText().toString().equals("") == false) {
             String kohde = ww_sivu.getText().toString();
+            System.out.println("teksti: "+kohde);
             if(kohde.length()>8){
                 if ((kohde.substring(0, 7).equals("http://") == true) || (kohde.substring(0, 8).equals("https://") == true)) {
-                    webbi.loadUrl(kohde);
-                } else {
-                    webbi.loadUrl("http://" + kohde);
-                }
+                        webbi.loadUrl(kohde);
+                    } else {
+                    if (kohde.equals("index.html")) {
+                        webbi.loadUrl("file:///android_asset/index.html");
+                    } else {
+                        webbi.loadUrl("http://" + kohde);
+                    }
+            }
             } else {
                 webbi.loadUrl("http://" + kohde);
             }
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             String edellinen = webbi.getUrl();
             sivuHistoria(edellinen);
         }
+
 
     public void paivitaSivu(View v){
 
@@ -113,9 +119,11 @@ public void sivuTaakse(View v){
         String current = "";
     if (liter.hasNext()) {
         liter.next();
-        current = (String) liter.next();
-        webbi.loadUrl(current);
-        liter.previous();
+        if (liter.hasNext()) {
+            current = (String) liter.next();
+            webbi.loadUrl(current);
+            liter.previous();
+        }
     }
     }
 
