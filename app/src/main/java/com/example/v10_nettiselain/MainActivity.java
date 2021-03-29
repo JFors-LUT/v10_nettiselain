@@ -2,14 +2,7 @@ package com.example.v10_nettiselain;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.icu.text.Edits;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void performHaku(View v) {
-
         if (ww_sivu.getText().toString().equals("") == false) {
             String kohde = ww_sivu.getText().toString();
             if(kohde.length()>8){
